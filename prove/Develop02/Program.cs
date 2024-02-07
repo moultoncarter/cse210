@@ -3,44 +3,44 @@ using System.IO;
 
 public class Entry
 {
-    string content;
-    DateTime timeCreated;
-    string usedPrompt;
+    string _content;
+    DateTime _timeCreated;
+    string _usedPrompt;
 
     public Entry (string entryText, DateTime date, string prompt)
     {
-        content = entryText;
-        timeCreated = date;
-        usedPrompt = prompt;
+        _content = entryText;
+        _timeCreated = date;
+        _usedPrompt = prompt;
     }
     public void ReadEntry()
     {
-        Console.WriteLine($"Date: {timeCreated}\nPrompt: {usedPrompt}\nEntry: {content}");
+        Console.WriteLine($"Date: {_timeCreated}\nPrompt: {_usedPrompt}\nEntry: {_content}");
     }
     public string GetEntry()
     {
-        return $"{timeCreated},{usedPrompt},{content}";
+        return $"{_timeCreated},{_usedPrompt},{_content}";
     }
 }
 public class Journal
 {
-    private string name;
-    List <Entry> entries;
+    private string _name;
+    List <Entry> _entries;
 
     public Journal(string name)
     {
-        this.name = $"{name}.csv";
-        this.entries = new List <Entry>();
+        _name = $"{name}.csv";
+        _entries = new List <Entry>();
     }
 
     public void AddNewEntry(Entry addedEntry)
     {
-        this.entries.Add(addedEntry);
+        _entries.Add(addedEntry);
     }
 
     public void DisplayEntries()
     {
-        foreach (Entry written in entries)
+        foreach (Entry written in _entries)
         {
             written.ReadEntry();
         }
@@ -48,10 +48,10 @@ public class Journal
 
     public void SaveJournal()
     {
-        string filename = @$"journals\{name}";
+        string filename = @$"journals\{_name}";
         using (StreamWriter file = new StreamWriter(filename))
         {
-            foreach (Entry written in entries)
+            foreach (Entry written in _entries)
             {
                 Console.WriteLine(written.GetEntry());
                 file.WriteLine(written.GetEntry());
@@ -61,7 +61,7 @@ public class Journal
     }
     public void LoadJournal()
     {
-        string filename = @$"journals\{name}";
+        string filename = @$"journals\{_name}";
             string[] lines = File.ReadAllLines(filename);
             if (lines != null && lines[0] != "")
             {
