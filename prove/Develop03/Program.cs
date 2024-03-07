@@ -2,34 +2,6 @@ using System;
 
 // I just want it on record that this feels bad to code
 // why am i using 3 classes here
-
-/* public class Scripture
-{
-    private string _name;
-    private string _original;
-    private List<string> _modified;
-
-    public Scripture(string name, string scripture)
-    {
-        _name = name;
-        List<string> tempScript = new List<string>();
-        foreach (string word in scripture.Split())
-        {
-            tempScript.Add(word);
-        }
-        
-        _original = scripture;
-        _modified = tempScript;
-    } 
-
-    public void Display()
-    {
-        Console.WriteLine(_original);
-        _modified.ForEach(Console.WriteLine);
-    }
-}
-*/
-
 public class Word
 {
     // ??? with my (albeit very limited) experience a string list does this better (even if it doesnt its easier)
